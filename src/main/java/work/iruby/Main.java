@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import work.iruby.dao.DatabaseDao;
 import work.iruby.dao.JdbcDao;
+import work.iruby.dao.MybatisDao;
 import work.iruby.entity.News;
 import work.iruby.utils.OkHttps;
 
@@ -18,8 +19,6 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         String sinaIndex = "https://sina.cn/";
-//        HashSet<String> isVisit = new HashSet<>();
-//        ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
         String html = OkHttps.get(sinaIndex);
         Document document = Jsoup.parse(html);
         Elements elements = document.select("a");
@@ -28,6 +27,10 @@ public class Main {
         DatabaseDao dao = new JdbcDao();
         System.out.println(dao.getInterestedLink());
         News news = new News("标题", "内容", "链接");
+        dao.addNews(news);
+
+        dao = new MybatisDao();
+        System.out.println(dao.getInterestedLink());
         dao.addNews(news);
     }
 }
