@@ -1,0 +1,1 @@
+insert into interested_link values ('https://sina.cn/');
