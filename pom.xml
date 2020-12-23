@@ -74,6 +74,16 @@
             <version>4.2.0</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.6</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.6.0</version>
@@ -147,9 +157,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>7.3.2</version>
                 <configuration>
-                    <url>jdbc:h2:file:D:\workspace-idea\iruby-crawler\crawler</url>
+                    <url>jdbc:mysql://121.4.73.4:3306/crawler</url>
                     <user>root</user>
-                    <password>root</password>
+                    <password>123465</password>
                 </configuration>
             </plugin>
         </plugins>
