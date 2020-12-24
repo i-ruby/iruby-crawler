@@ -28,10 +28,8 @@ public class Crawler extends Thread {
     @Override
     public void run() {
         String link;
-        System.out.println(this.getName() + " start run");
         try {
             while ((link = dao.getInterestedLink()) != null) {
-                System.out.println(this.getName() + " is running");
                 Message<String> verify = verifyLink(link);
                 if (verify.isSuccess()) {
                     dealLink(verify.getContent());
