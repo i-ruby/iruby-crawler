@@ -32,8 +32,11 @@ public class MybatisDao implements DatabaseDao {
     @Override
     public String getInterestedLink() throws SQLException {
         String link = "";
-        try (SqlSession session = sqlSessionFactory.openSession(true)) {
-            link = session.selectOne(CRAWLER_MAPPER + "selectLink");
+        synchronized (this){
+            try (SqlSession session = sqlSessionFactory.openSession(true)) {
+                link = session.selectOne(CRAWLER_MAPPER + "selectLink");
+                deleteInterestedLink(link);
+            }
         }
         return link;
     }
