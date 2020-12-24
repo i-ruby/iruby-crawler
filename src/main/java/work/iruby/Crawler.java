@@ -28,11 +28,13 @@ public class Crawler extends Thread {
     @Override
     public void run() {
         String link;
+        System.out.println(this.getName() + " start run");
         try {
             while ((link = dao.getInterestedLink()) != null) {
+                System.out.println(this.getName() + " is running");
                 Message<String> verify = verifyLink(link);
                 if (verify.isSuccess()) {
-                    dealLink(link);
+                    dealLink(verify.getContent());
                 }
             }
         } catch (Exception e) {
@@ -51,9 +53,7 @@ public class Crawler extends Thread {
             System.out.println(this.getName() + ":" + title);
         }
         Elements elements = document.select("a");
-        elements.forEach(e -> {
-            addInterestedLink(e.attr("href"));
-        });
+        elements.forEach(e -> addInterestedLink(e.attr("href")));
         dao.addUnInterestedLink(link);
     }
 
