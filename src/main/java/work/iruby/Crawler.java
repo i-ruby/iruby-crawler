@@ -29,12 +29,15 @@ public class Crawler extends Thread {
     public void run() {
         String link;
         try {
+            System.out.println(getName() + " is start");
             while ((link = dao.getInterestedLink()) != null) {
+                System.out.println(getName() + ":link" + link);
                 Message<String> verify = verifyLink(link);
                 if (verify.isSuccess()) {
-                    dealLink(link);
+                    dealLink(verify.getContent());
                 }
             }
+            System.out.println(getName() + " is end");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,9 +54,7 @@ public class Crawler extends Thread {
             System.out.println(this.getName() + ":" + title);
         }
         Elements elements = document.select("a");
-        elements.forEach(e -> {
-            addInterestedLink(e.attr("href"));
-        });
+        elements.forEach(e -> addInterestedLink(e.attr("href")));
         dao.addUnInterestedLink(link);
     }
 

@@ -31,11 +31,15 @@ public class MybatisDao implements DatabaseDao {
 
     @Override
     public String getInterestedLink() throws SQLException {
-        String link = "";
-        synchronized (this){
+        String link;
+        synchronized (this) {
             try (SqlSession session = sqlSessionFactory.openSession(true)) {
                 link = session.selectOne(CRAWLER_MAPPER + "selectLink");
-                deleteInterestedLink(link);
+                if (link != null) {
+                    deleteInterestedLink(link);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
         return link;
