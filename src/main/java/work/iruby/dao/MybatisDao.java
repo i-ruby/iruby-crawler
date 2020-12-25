@@ -9,6 +9,7 @@ import work.iruby.entity.News;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author Ruby
@@ -80,6 +81,14 @@ public class MybatisDao implements DatabaseDao {
         try (SqlSession session = sqlSessionFactory.openSession(true)) {
             session.insert(CRAWLER_MAPPER + "insertNews", news);
         }
+    }
+
+    public List<News> selectNewsList() {
+        List<News> list;
+        try (SqlSession session = sqlSessionFactory.openSession(true)) {
+            list = session.selectList(CRAWLER_MAPPER + "selectNewsList");
+        }
+        return list;
     }
 
 }

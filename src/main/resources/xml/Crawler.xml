@@ -22,5 +22,8 @@
         insert into news (title, content, link, created_at, update_at)
         VALUES (#{title}, #{content}, #{link}, now(), now())
     </insert>
+    <select id="selectNewsList" resultType="work.iruby.entity.News">
+        select title, content, link, created_at,update_at from news limit 10
+    </select>
 
 </mapper>
