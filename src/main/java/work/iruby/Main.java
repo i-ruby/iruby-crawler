@@ -9,12 +9,12 @@ import work.iruby.dao.MybatisDao;
  */
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        int crawlerNum = 4;
+        int crawlerNum = 5;
         DatabaseDao dao = new MybatisDao();
         new Crawler(dao).start();
         //保证初始数据
         Thread.sleep(10000);
-        for (int i = 0; i < crawlerNum; i++) {
+        for (int i = 0; i < crawlerNum - 1; i++) {
             new Crawler(dao).start();
         }
     }
