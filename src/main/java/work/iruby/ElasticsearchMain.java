@@ -21,7 +21,7 @@ public class ElasticsearchMain {
     public static void main(String[] args) {
         while (true) {
             System.out.println("please input a keyword");
-            Scanner scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in, "UTF-8");
             String keyword = scanner.nextLine();
             search(keyword);
         }
