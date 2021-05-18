@@ -1,28 +1,28 @@
-drop table if exists `uninterested_link`;
+DROP TABLE IF EXISTS `uninterested_link`;
 
-create table if not exists  `uninterested_link`
+CREATE TABLE IF NOT EXISTS `uninterested_link`
 (
     link VARCHAR(1000)
 );
 
-drop table if exists `interested_link`;
+DROP TABLE IF EXISTS `interested_link`;
 
-create table if not exists `interested_link`
+CREATE TABLE IF NOT EXISTS `interested_link`
 (
     link VARCHAR(1000)
 );
 
-drop table if exists `news`;
+DROP TABLE IF EXISTS `news`;
 
-create table if not exists `news`
+CREATE TABLE IF NOT EXISTS `news`
 (
-    id         BIGINT auto_increment,
+    id         BIGINT AUTO_INCREMENT,
     title      VARCHAR(100),
     content    TEXT,
     link       VARCHAR(1000),
     created_at TIMESTAMP,
     update_at  TIMESTAMP,
-    constraint NEWS_PK
-        primary key (id)
+    CONSTRAINT NEWS_PK
+        PRIMARY KEY (id)
 );
 

@@ -1,1 +1,1 @@
-insert into interested_link values ('https://sina.cn/');
+INSERT INTO interested_link VALUES ('https://sina.cn/');

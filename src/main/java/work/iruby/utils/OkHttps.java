@@ -15,7 +15,7 @@ import java.util.Optional;
  * @date 2020/12/22 16:29
  */
 public class OkHttps {
-    private static OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient client = new OkHttpClient();
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 

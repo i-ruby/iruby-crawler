@@ -64,8 +64,8 @@ public class Crawler extends Thread {
                 if (!dao.searchUnInterestedLink(link)) {
                     dao.addInterestedLink(link);
                 }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
             }
         }
     }
